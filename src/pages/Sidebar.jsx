@@ -8,7 +8,7 @@ const Sidebar = () => (
   <SaasSidebar h="100%">
     <SidebarSection>
       <NavItem href="https://gai.gg">generaitiv.xyz</NavItem>
-      <NavItem href="https://github.com/Ada-Lovelace-0x05/generaitiv-docs">
+      <NavItem href="https://github.com/Generaitiv/api-docs">
         docs
       </NavItem>
     </SidebarSection>
