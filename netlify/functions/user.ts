@@ -12,30 +12,30 @@ const handler = async (event) => {
     };
   }
   try {
-    const currentAddress = await request(
+    const currentAddress = (await request(
       "https://api.generaitiv.xyz/v1/consumer/user-info/",
       {
         headers: { Authorization: auth },
       }
-    );
+    )) as { address: string };
 
-    const user = await request(
+    const user = (await request(
       `https://api.generaitiv.xyz/v1/u/${currentAddress?.address}/`
-    );
+    )) as { message: string };
 
-    const userCollections = await request(
+    const userCollections = (await request(
       `https://api.generaitiv.xyz/v1/u/${currentAddress?.address}/collections/`,
       {
         headers: {
           Authorization: auth,
         },
       }
-    );
+    )) as { owner: string }[];
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        user: user,
+        user: user?.message ? { address: currentAddress.address } : user,
         userCollections,
       }),
     };
